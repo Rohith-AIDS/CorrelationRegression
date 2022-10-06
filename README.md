@@ -59,4 +59,4 @@ plt.legend(['Regression Line','Data points'])
 
 
 # Results and Output : 
-![CORRELATION](C:\Users\vruser\Downloads)
+![CORRELATION](correlation.png)
