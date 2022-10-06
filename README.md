@@ -24,34 +24,36 @@ If y represents the dependent variable and x the independent variable, this rela
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-x=[int(i) for i in input().split()]
-y=[int(i) for i in input().split()]
-N=len(x)
-Sx=0
-Sy=0
-Sxy=0
-Sx2=0
-Sy2=0
+print("Enter Virat's last 10 T20 Scores:")
+Virat=[int(i) for i in input().split()]
+print("Enter Rohith's last 10 T20 Scores:")
+Rohith=[int(i) for i in input().split()]
+N=len(Virat)
+SVirat=0
+SRohith=0
+SViratRohith=0
+SVirat2=0
+SRohith2=0
 for i in range(0,N):
-    Sx=Sx+x[i]
-    Sy=Sy+y[i]
-    Sxy=Sxy+x[i]*y[i]
-    Sx2=Sx2+x[i]**2
-    Sy2=Sy2+y[i]**2
-r=(N*Sxy-Sx*Sy)/(math.sqrt(N*Sx2-Sx**2)*math.sqrt(N*Sy2-Sy**2))
+    SVirat=SVirat+Virat[i]
+    SRohith=SRohith+Rohith[i]
+    SViratRohith=SViratRohith+Virat[i]*Rohith[i]
+    SVirat2=SVirat2+Virat[i]**2
+    SRohith2=SRohith2+Rohith[i]**2
+r=(N*SViratRohith-SVirat*SRohith)/(math.sqrt(N*SVirat2-SVirat**2)*math.sqrt(N*SRohith2-SRohith**2))
 print("The correlation coefficient is %0.3f"%r)
-byx=(N*Sxy-Sx*Sy)/(N*Sx2-Sx**2)
-xmean=Sx/N
-ymean=Sy/N
-print("The Regression line Y on X is ::: y = %0.3f %0.3f (x-%0.3f)"%(ymean,byx,xmean))
-plt.scatter(x,y)
-def Reg(x):
-    return ymean+byx*(x-xmean)
-x=np.linspace(0,80,51)
-y1=Reg(x)
-plt.plot(x,y1,'r')
-plt.xlabel('x-data')
-plt.ylabel('y-data')
+bRohithVirat=(N*SViratRohith-SVirat*SRohith)/(N*SVirat2-SVirat**2)
+Viratmean=SVirat/N
+Rohithmean=SRohith/N
+print("The Regression line Rohith on Virat is ::: Rohith = %0.3f %0.3f (Virat-%0.3f)"%(Rohithmean,bRohithVirat,Viratmean))
+plt.scatter(Virat,Rohith)
+def Reg(Virat):
+    return Rohithmean+bRohithVirat*(Virat-Viratmean)
+Virat=np.linspace(0,80,51)
+Rohith1=Reg(Virat)
+plt.plot(Virat,Rohith1,'r')
+plt.xlabel('Virat-data')
+plt.ylabel('Rohith-data')
 plt.legend(['Regression Line','Data points'])
 ```
 
