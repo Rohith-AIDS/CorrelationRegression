@@ -49,7 +49,7 @@ print("The Regression line Rohith on Virat is ::: Rohith = %0.3f %0.3f (Virat-%0
 plt.scatter(Virat,Rohith)
 def Reg(Virat):
     return Rohithmean+bRohithVirat*(Virat-Viratmean)
-Virat=np.linspace(0,80,51)
+Virat=np.linspace(0,122,51)
 Rohith1=Reg(Virat)
 plt.plot(Virat,Rohith1,'r')
 plt.xlabel('Virat-data')
